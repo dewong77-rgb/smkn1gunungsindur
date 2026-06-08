@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMKN 1 Gunung Sindur dalam Angka — 2025/2026</title>
+<meta name="description" content="Potret data SMKN 1 Gunung Sindur berdasarkan Dapodik semester genap 2025/2026. Data siswa, guru, sosial ekonomi, rombel, dan alumni.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --navy: #0f2744;
+  --navy-mid: #1a3a5c;
+  --gold: #c8960a;
+  --gold-light: #f0b429;
+  --cream: #faf8f3;
+  --cream-dark: #f2ede2;
+  --text: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --text-muted: #7a7a7a;
+  --border: rgba(15,39,68,0.12);
+  --border-strong: rgba(15,39,68,0.2);
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --blue1: #1a5fa8;
+  --blue2: #4a8fd4;
+  --blue3: #a8cef0;
+  --teal: #0f7a60;
+  --amber: #c07800;
+  --rose: #b03060;
+  --purple: #5a4aaa;
+  --gray: #888;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.015) 40px,
+    rgba(255,255,255,0.015) 41px
+  );
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2.5rem;
+  position: relative;
+}
+.header-eyebrow {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: .75rem;
+  font-weight: 300;
+}
+.header-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.header-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.header-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.header-stats {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 1.5rem;
+}
+.hstat {
+  flex: 1;
+  min-width: 100px;
+  padding: .75rem 1.5rem .75rem 0;
+  border-right: 1px solid rgba(255,255,255,.1);
+}
+.hstat:last-child { border-right: none; }
+.hstat-n {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1;
+}
+.hstat-l {
+  font-size: 11px;
+  color: rgba(255,255,255,.5);
+  margin-top: 2px;
+  letter-spacing: .04em;
+}
+
+/* ── NAV ── */
+.nav-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 8px rgba(0,0,0,.04);
+}
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  padding: 1rem 1.25rem;
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .2s, border-color .2s;
+}
+.nav-btn:hover { color: var(--navy); }
+.nav-btn.active {
+  color: var(--navy);
+  font-weight: 500;
+  border-bottom-color: var(--gold);
+}
+
+/* ── MAIN ── */
+.main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── SECTION ── */
+.sec { margin-bottom: 3rem; }
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid var(--border);
+}
+.sec-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--navy);
+}
+.sec-note {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── METRIC CARDS ── */
+.m-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.m-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.1rem 1.2rem;
+  transition: box-shadow .2s;
+}
+.m-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+.m-card.accent { border-left: 3px solid var(--gold); }
+.m-card.danger { border-left: 3px solid #c0392b; }
+.m-lbl { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; letter-spacing: .03em; }
+.m-val { font-family: var(--font-display); font-size: 2.2rem; color: var(--navy); line-height: 1.05; }
+.m-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+/* ── TWO / THREE COL ── */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; }
+
+/* ── CHART WRAPPER ── */
+.chart-wrap { position: relative; width: 100%; }
+
+/* ── LEGEND ── */
+.lgd { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 10px; font-size: 12px; color: var(--text-mid); }
+.lgd span { display: flex; align-items: center; gap: 5px; }
+.dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── BAR ROWS ── */
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+.bar-name { font-size: 12px; color: var(--text-muted); width: 110px; flex-shrink: 0; text-align: right; }
+.bar-track { flex: 1; background: var(--cream-dark); border-radius: 4px; height: 20px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding: 0 8px; font-size: 11px; font-weight: 500; min-width: 28px; }
+
+/* ── INFO ROWS ── */
+.info-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.info-row:last-child { border-bottom: none; }
+.info-key { color: var(--text-muted); }
+.info-val { color: var(--navy); font-weight: 500; text-align: right; }
+
+/* ── ROMBEL CARDS ── */
+.rombel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+}
+.rombel-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  border-radius: 8px;
+  padding: 10px 12px;
+  transition: box-shadow .15s;
+}
+.rombel-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,.07); }
+.rombel-name { font-size: 11px; font-weight: 500; color: var(--text-muted); margin-bottom: 4px; }
+.rombel-val { font-family: var(--font-display); font-size: 1.6rem; color: var(--navy); line-height: 1; }
+.rombel-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+/* ── HIGHLIGHT BOX ── */
+.hl-box {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.hl-n {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.hl-l { font-size: 13px; color: rgba(255,255,255,.65); margin-top: 4px; }
+
+/* ── PROGRESS BAR ── */
+.prog-wrap { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 10px 0; }
+.prog-seg { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; }
+
+/* ── ALERT ── */
+.alert {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-left: 3px solid var(--amber);
+  border-radius: 6px;
+  padding: .85rem 1rem;
+  font-size: 12px;
+  color: var(--text-mid);
+  margin-top: .75rem;
+  line-height: 1.5;
+}
+.alert.red {
+  background: #fff5f5;
+  border-color: #ffc0c0;
+  border-left-color: #c0392b;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--navy);
+  color: rgba(255,255,255,.45);
+  text-align: center;
+  padding: 2rem;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.site-footer a { color: var(--gold-light); text-decoration: none; }
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* ── TAG ── */
+.tag {
+  display: inline-block;
+  background: var(--cream-dark);
+  color: var(--navy-mid);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.tag.gold { background: #fef3c7; color: #92600a; }
+.tag.red { background: #fee; color: #a00; }
+
+/* ── FADE IN ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.panel.active > * {
+  animation: fadeUp .35s ease both;
+}
+.panel.active > *:nth-child(2) { animation-delay: .05s; }
+.panel.active > *:nth-child(3) { animation-delay: .1s; }
+.panel.active > *:nth-child(4) { animation-delay: .15s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .two, .three { grid-template-columns: 1fr; }
+  .header-stats { gap: 1rem; }
+  .hstat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); padding: .5rem 0; }
+  .hstat:last-child { border-bottom: none; }
+  .nav-btn { padding: .9rem .9rem; font-size: 12px; }
+  .main { padding: 1.5rem 1.25rem 3rem; }
+  .bar-name { width: 80px; font-size: 11px; }
+}
+
+@media print {
+  .nav-bar { display: none; }
+  .panel { display: block !important; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <p class="header-eyebrow">NPSN 20271184 · Kec. Gunung Sindur, Kab. Bogor, Jawa Barat</p>
+    <h1 class="header-title">SMKN 1 Gunung Sindur<br><em>dalam Angka</em></h1>
+    <p class="header-sub">Data Pokok Pendidikan (Dapodik) · Semester Genap 2025/2026 · Diunduh 8 Juni 2026</p>
+    <div class="header-stats">
+      <div class="hstat">
+        <div class="hstat-n">1.329</div>
+        <div class="hstat-l">Peserta didik</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">35</div>
+        <div class="hstat-l">Rombongan belajar</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">68</div>
+        <div class="hstat-l">Guru &amp; tendik</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">5</div>
+        <div class="hstat-l">Program keahlian</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">2011</div>
+        <div class="hstat-l">Tahun berdiri</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav-bar" role="navigation" aria-label="Navigasi panel data">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="switchTab('ringkasan', this)">Ringkasan</button>
+    <button class="nav-btn" onclick="switchTab('siswa', this)">Peserta Didik</button>
+    <button class="nav-btn" onclick="switchTab('sosialekon', this)">Sosial Ekonomi</button>
+    <button class="nav-btn" onclick="switchTab('rombel', this)">Rombel &amp; Ruang</button>
+    <button class="nav-btn" onclick="switchTab('ptk', this)">Guru &amp; Tendik</button>
+    <button class="nav-btn" onclick="switchTab('alumni', this)">Alumni &amp; Lulusan</button>
+  </div>
+</nav>
+
+<!-- ══════════ MAIN ══════════ -->
+<main class="main" id="main-content">
+
+<!-- ═══ PANEL 1: RINGKASAN ═══ -->
+<div id="tab-ringkasan" class="panel active" role="tabpanel">
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Angka kunci</h2>
+    </div>
+    <div class="m-grid">
+      <div class="m-card accent">
+        <p class="m-lbl">Total siswa</p>
+        <p class="m-val">1.329</p>
+        <p class="m-sub">L 758 · P 571</p>
+      </div>
+      <div class="m-card">
+        <p class="m-lbl">Rombel aktif</p>
+        <p class="m-val">35</p>
+        <p class="m-sub">X:11 · XI:12 · XII:12</p>
+      </div>
+      <div class="m-card">
+        <p class="m-lbl">Guru</p>
+        <p class="m-val">53</p>
+        <p class="m-sub">L 38 · P 15</p>
+      </div>
+      <div class="m-card">
+        <p class="m-lbl">Tenaga kependidikan</p>
+        <p class="m-val">15</p>
+        <p class="m-sub">Semua honor sekolah</p>
+      </div>
+      <div class="m-card">
+        <p class="m-lbl">Program keahlian</p>
+        <p class="m-val">5</p>
+        <p class="m-sub">TO · TP · TE · TJKT · BP</p>
+      </div>
+      <div class="m-card danger">
+        <p class="m-lbl">Rombel tanpa ruang tetap</p>
+        <p class="m-val">14</p>
+        <p class="m-sub">40% dari total rombel</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two sec">
+    <div>
+      <div class="sec-header">
+        <h2 class="sec-title">Siswa per tingkat</h2>
+      </div>
+      <div class="lgd">
+        <span><span class="dot" style="background:#1a5fa8"></span>Laki-laki</span>
+        <span><span class="dot" style="background:#b03060"></span>Perempuan</span>
+      </div>
+      <div class="chart-wrap" style="height:200px">
+        <canvas id="c-tingkat" role="img" aria-label="Bar chart siswa per tingkat kelas. Kelas X 512 siswa (L277 P235), Kelas XI 415 (L235 P180), Kelas XII 402 (L246 P156).">X:512, XI:415, XII:402</canvas>
+      </div>
+    </div>
+    <div>
+      <div class="sec-header">
+        <h2 class="sec-title">Siswa per program keahlian</h2>
+      </div>
+      <div class="chart-wrap" style="height:200px">
+        <canvas id="c-prodi" role="img" aria-label="Bar chart siswa per program keahlian. TJKT 320, Broadcasting 303, Teknik Otomotif 228, Teknik Pemesinan 194, Teknik Elektronika 179.">TJKT 320, BP 303, TO 228, TP 194, TE 179</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Identitas sekolah</h2>
+    </div>
+    <div class="two">
+      <div>
+        <div class="info-row"><span class="info-key">Nama resmi</span><span class="info-val">SMK Negeri 1 Gunung Sindur</span></div>
+        <div class="info-row"><span class="info-key">NPSN</span><span class="info-val">20271184</span></div>
+        <div class="info-row"><span class="info-key">Status</span><span class="info-val">Negeri · Pemerintah Daerah</span></div>
+        <div class="info-row"><span class="info-key">SK Pendirian</span><span class="info-val">12 Mei 2011</span></div>
+        <div class="info-row"><span class="info-key">Akreditasi ISO</span><span class="info-val">Belum bersertifikat</span></div>
+      </div>
+      <div>
+        <div class="info-row"><span class="info-key">Waktu belajar</span><span class="info-val">5 hari, sehari penuh</span></div>
+        <div class="info-row"><span class="info-key">Daya listrik</span><span class="info-val">53.000 watt (PLN)</span></div>
+        <div class="info-row"><span class="info-key">Internet</span><span class="info-val">Fibernet</span></div>
+        <div class="info-row"><span class="info-key">Sumber air</span><span class="info-val">Sumur terlindungi</span></div>
+        <div class="info-row"><span class="info-key">Bantuan 2024</span><span class="info-val">Rp 400 jt — Peningkatan Mutu PSMK</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Kontak</h2>
+    </div>
+    <div class="info-row"><span class="info-key">Telepon</span><span class="info-val">082121111252</span></div>
+    <div class="info-row"><span class="info-key">Email</span><span class="info-val">info@smkn1gunungsindur.sch.id</span></div>
+    <div class="info-row"><span class="info-key">Website</span><span class="info-val"><a href="http://www.smkn1gunungsindur.sch.id" target="_blank" style="color:var(--blue1)">smkn1gunungsindur.sch.id</a></span></div>
+    <div class="info-row"><span class="info-key">Koordinat</span><span class="info-val">-6.3724, 106.7087</span></div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 2: PESERTA DIDIK ═══ -->
+<div id="tab-siswa" class="panel" role="tabpanel">
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Komposisi jenis kelamin</h2>
+    </div>
+    <div class="m-grid">
+      <div class="m-card accent"><p class="m-lbl">Laki-laki</p><p class="m-val">758</p><p class="m-sub">57% dari total</p></div>
+      <div class="m-card"><p class="m-lbl">Perempuan</p><p class="m-val">571</p><p class="m-sub">43% dari total</p></div>
+      <div class="m-card"><p class="m-lbl">Rasio L:P</p><p class="m-val">1,33</p><p class="m-sub">Dominasi laki-laki</p></div>
+    </div>
+    <div class="prog-wrap">
+      <div class="prog-seg" style="width:57%;background:#1a5fa8;color:#e6f0fa">Laki-laki 57%</div>
+      <div class="prog-seg" style="width:43%;background:#b03060;color:#fce8ef">Perempuan 43%</div>
+    </div>
+    <div class="alert">
+      Teknik Pemesinan (TP) hampir seluruhnya laki-laki — 97% dari 194 siswa. Broadcasting Perfilman paling berimbang: L35% / P65%.
+    </div>
+  </div>
+
+  <div class="two sec">
+    <div>
+      <div class="sec-header"><h2 class="sec-title">Distribusi usia</h2></div>
+      <div class="chart-wrap" style="height:200px">
+        <canvas id="c-usia" role="img" aria-label="Distribusi usia siswa. 13-15 tahun 217 siswa, 16-20 tahun 1112 siswa.">13-15 th: 217, 16-20 th: 1112</canvas>
+      </div>
+    </div>
+    <div>
+      <div class="sec-header"><h2 class="sec-title">Agama siswa</h2></div>
+      <div class="chart-wrap" style="height:160px">
+        <canvas id="c-agama" role="img" aria-label="Agama siswa. Islam 1276 (96%), Kristen 34 (2.6%), Konghucu 9, Budha 5, Katholik 5.">Islam 1276, Kristen 34, Konghucu 9, Budha 5, Katholik 5</canvas>
+      </div>
+      <div class="lgd" style="margin-top:8px">
+        <span><span class="dot" style="background:#1a5fa8"></span>Islam 1.276</span>
+        <span><span class="dot" style="background:#0f7a60"></span>Kristen 34</span>
+        <span><span class="dot" style="background:#c07800"></span>Konghucu 9</span>
+        <span><span class="dot" style="background:#b03060"></span>Budha 5</span>
+        <span><span class="dot" style="background:#5a4aaa"></span>Khatolik 5</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Alat transportasi ke sekolah</h2><span class="sec-note">estimasi dari sampling data</span></div>
+    <div class="bar-row"><span class="bar-name">Jalan kaki</span><div class="bar-track"><div class="bar-fill" style="width:62%;background:#1a5fa8;color:#e6f0fa">~820 siswa (62%)</div></div></div>
+    <div class="bar-row"><span class="bar-name">Sepeda motor</span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#4a8fd4;color:#fff">~240 (18%)</div></div></div>
+    <div class="bar-row"><span class="bar-name">Angkot / bus</span><div class="bar-track"><div class="bar-fill" style="width:12%;background:#a8cef0;color:#0f2744">~160 (12%)</div></div></div>
+    <div class="bar-row"><span class="bar-name">Ojek</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:#ccc;color:#333">~65</div></div></div>
+    <div class="bar-row"><span class="bar-name">Lainnya</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#ddd;color:#555">~44</div></div></div>
+    <div class="alert">62% siswa jalan kaki ke sekolah — konsisten dengan kantong pemukiman lokal di sekitar Kec. Gunung Sindur. Ini juga mengindikasikan bahwa akses transportasi bukan hambatan utama.</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Status KIP &amp; PIP</h2></div>
+    <div class="m-grid">
+      <div class="m-card"><p class="m-lbl">Penerima KIP aktif</p><p class="m-val">~87</p><p class="m-sub">6,5% dari total</p></div>
+      <div class="m-card"><p class="m-lbl">Layak PIP (usulan sekolah)</p><p class="m-val">~142</p><p class="m-sub">10,7% siswa</p></div>
+      <div class="m-card"><p class="m-lbl">Rekening BRI aktif</p><p class="m-val">ada</p><p class="m-sub">Untuk penyaluran PIP</p></div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted)">Alasan layak PIP: Siswa Miskin/Rentan Miskin, Pemegang PKH/KPS/KKS, Yatim Piatu/Panti Sosial.</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Jenis tinggal</h2></div>
+    <div class="bar-row"><span class="bar-name">Bersama orang tua</span><div class="bar-track"><div class="bar-fill" style="width:91%;background:#1a5fa8;color:#e6f0fa">~1.210 (91%)</div></div></div>
+    <div class="bar-row"><span class="bar-name">Kos / asrama</span><div class="bar-track"><div class="bar-fill" style="width:6%;background:#ccc;color:#333">~80 (6%)</div></div></div>
+    <div class="bar-row"><span class="bar-name">Lainnya</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#ddd;color:#555">~39</div></div></div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 3: SOSIAL EKONOMI ═══ -->
+<div id="tab-sosialekon" class="panel" role="tabpanel">
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Distribusi penghasilan orang tua</h2>
+    </div>
+    <div class="chart-wrap" style="height:280px">
+      <canvas id="c-penghasilan" role="img" aria-label="Distribusi penghasilan orang tua siswa. Terbesar pada bracket 1-2 juta (500 siswa), diikuti 2-5 juta (389 siswa).">Kurang dari 500rb 69, 500rb-1jt 263, 1-2jt 500, 2-5jt 389, 5-20jt 17, tidak diisi 91</canvas>
+    </div>
+    <div class="alert">
+      <strong>67% siswa (889 dari 1.329) berasal dari keluarga berpenghasilan ≤2 juta/bulan.</strong> Ini adalah basis argumen yang kuat untuk advokasi BOSP, PIP, dan kebijakan pembebasan iuran.
+    </div>
+  </div>
+
+  <div class="two sec">
+    <div>
+      <div class="sec-header"><h2 class="sec-title">Pekerjaan ayah</h2><span class="sec-note">estimasi</span></div>
+      <div class="bar-row"><span class="bar-name">Kary. swasta</span><div class="bar-track"><div class="bar-fill" style="width:32%;background:#1a5fa8;color:#e6f0fa">~425</div></div></div>
+      <div class="bar-row"><span class="bar-name">Wiraswasta</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:#4a8fd4;color:#fff">~372</div></div></div>
+      <div class="bar-row"><span class="bar-name">Buruh</span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#a8cef0;color:#0f2744">~239</div></div></div>
+      <div class="bar-row"><span class="bar-name">Tidak bekerja</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:#ddd;color:#555">~133</div></div></div>
+      <div class="bar-row"><span class="bar-name">PNS/TNI</span><div class="bar-track"><div class="bar-fill" style="width:6%;background:#0f7a60;color:#e1f5ee">~80</div></div></div>
+      <div class="bar-row"><span class="bar-name">Sudah meninggal</span><div class="bar-track"><div class="bar-fill" style="width:2%;background:#f0997b;color:#4a1b0c">~18</div></div></div>
+    </div>
+    <div>
+      <div class="sec-header"><h2 class="sec-title">Pendidikan ayah</h2><span class="sec-note">estimasi</span></div>
+      <div class="bar-row"><span class="bar-name">SMA/SMK</span><div class="bar-track"><div class="bar-fill" style="width:41%;background:#1a5fa8;color:#e6f0fa">~545</div></div></div>
+      <div class="bar-row"><span class="bar-name">SMP</span><div class="bar-track"><div class="bar-fill" style="width:27%;background:#4a8fd4;color:#fff">~359</div></div></div>
+      <div class="bar-row"><span class="bar-name">SD</span><div class="bar-track"><div class="bar-fill" style="width:17%;background:#a8cef0;color:#0f2744">~226</div></div></div>
+      <div class="bar-row"><span class="bar-name">D3/S1/S2</span><div class="bar-track"><div class="bar-fill" style="width:7%;background:#0f7a60;color:#e1f5ee">~93</div></div></div>
+      <div class="bar-row"><span class="bar-name">Tidak sekolah</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:#ccc;color:#333">~66</div></div></div>
+      <div class="bar-row"><span class="bar-name">Putus SD</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#f0997b;color:#4a1b0c">~40</div></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Catatan sosial khusus</h2></div>
+    <div class="three">
+      <div class="m-card"><p class="m-lbl">Ayah sudah meninggal</p><p class="m-val">~18</p><p class="m-sub">Siswa yatim dari ayah</p></div>
+      <div class="m-card"><p class="m-lbl">Ibu tidak bekerja</p><p class="m-val">~82%</p><p class="m-sub">Mayoritas ibu rumah tangga</p></div>
+      <div class="m-card"><p class="m-lbl">Dari luar Gn. Sindur</p><p class="m-val">~12%</p><p class="m-sub">Parung, Depok, Tangerang</p></div>
+    </div>
+    <div class="alert" style="margin-top:1rem">
+      Kombinasi antara dominasi pekerjaan buruh/wiraswasta kelas bawah dengan tingkat pendidikan ayah yang mayoritas SMA ke bawah menunjukkan bahwa SMKN 1 Gunung Sindur melayani segmen masyarakat yang secara statistik paling membutuhkan intervensi kebijakan pendidikan.
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 4: ROMBEL ═══ -->
+<div id="tab-rombel" class="panel" role="tabpanel">
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Infrastruktur rombel</h2>
+    </div>
+    <div class="m-grid">
+      <div class="m-card accent"><p class="m-lbl">Total rombel</p><p class="m-val">35</p></div>
+      <div class="m-card"><p class="m-lbl">Pakai ruang tetap</p><p class="m-val">21</p><p class="m-sub">60%</p></div>
+      <div class="m-card danger"><p class="m-lbl">Tanpa ruang tetap</p><p class="m-val">14</p><p class="m-sub">40% — pakai Ruang Guru</p></div>
+      <div class="m-card"><p class="m-lbl">Rata-rata per rombel</p><p class="m-val">38</p><p class="m-sub">Siswa/rombel</p></div>
+      <div class="m-card"><p class="m-lbl">Rombel terbesar</p><p class="m-val">48</p><p class="m-sub">X BP 1 & X TJKT 1 & X TP 1</p></div>
+      <div class="m-card"><p class="m-lbl">Rombel terkecil</p><p class="m-val">30</p><p class="m-sub">XI BP 2</p></div>
+    </div>
+    <div class="alert red">14 rombel — mayoritas kelas XII — tidak memiliki ruang kelas tetap dan menggunakan Ruang Guru sebagai ruang belajar. Ini indikator tekanan infrastruktur yang perlu menjadi prioritas pengajuan sarpras.</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Kelas X — 11 rombel, 512 siswa</h2>
+    </div>
+    <div class="rombel-grid">
+      <div class="rombel-card" style="border-left-color:#1a5fa8"><p class="rombel-name">X BP 1</p><p class="rombel-val">48</p><p class="rombel-sub">L8 · P40</p></div>
+      <div class="rombel-card" style="border-left-color:#1a5fa8"><p class="rombel-name">X BP 2</p><p class="rombel-val">46</p><p class="rombel-sub">L6 · P40</p></div>
+      <div class="rombel-card" style="border-left-color:#0f7a60"><p class="rombel-name">X TE 1</p><p class="rombel-val">46</p><p class="rombel-sub">L19 · P27</p></div>
+      <div class="rombel-card" style="border-left-color:#0f7a60"><p class="rombel-name">X TE 2</p><p class="rombel-val">45</p><p class="rombel-sub">L18 · P27</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">X TJKT 1</p><p class="rombel-val">48</p><p class="rombel-sub">L17 · P31</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">X TJKT 2</p><p class="rombel-val">47</p><p class="rombel-sub">L17 · P30</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">X TJKT 3</p><p class="rombel-val">47</p><p class="rombel-sub">L16 · P31</p></div>
+      <div class="rombel-card" style="border-left-color:#c07800"><p class="rombel-name">X TO 1</p><p class="rombel-val">47</p><p class="rombel-sub">L44 · P3</p></div>
+      <div class="rombel-card" style="border-left-color:#c07800"><p class="rombel-name">X TO 2</p><p class="rombel-val">47</p><p class="rombel-sub">L44 · P3</p></div>
+      <div class="rombel-card" style="border-left-color:#b03060"><p class="rombel-name">X TP 1</p><p class="rombel-val">48</p><p class="rombel-sub">L46 · P2</p></div>
+      <div class="rombel-card" style="border-left-color:#b03060"><p class="rombel-name">X TP 2</p><p class="rombel-val">45</p><p class="rombel-sub">L43 · P2</p></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Kelas XI — 12 rombel, 415 siswa</h2>
+    </div>
+    <div class="rombel-grid">
+      <div class="rombel-card" style="border-left-color:#1a5fa8"><p class="rombel-name">XI BP 1</p><p class="rombel-val">35</p><p class="rombel-sub">L11 · P24</p></div>
+      <div class="rombel-card" style="border-left-color:#1a5fa8"><p class="rombel-name">XI BP 2</p><p class="rombel-val">30</p><p class="rombel-sub">L9 · P21</p></div>
+      <div class="rombel-card" style="border-left-color:#1a5fa8"><p class="rombel-name">XI BP 3</p><p class="rombel-val">35</p><p class="rombel-sub">L8 · P27</p></div>
+      <div class="rombel-card" style="border-left-color:#0f7a60"><p class="rombel-name">XI TE 1</p><p class="rombel-val">35</p><p class="rombel-sub">L19 · P16</p></div>
+      <div class="rombel-card" style="border-left-color:#0f7a60"><p class="rombel-name">XI TE 2</p><p class="rombel-val">35</p><p class="rombel-sub">L17 · P18</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">XI TJKT 1</p><p class="rombel-val">35</p><p class="rombel-sub">L14 · P21</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">XI TJKT 2</p><p class="rombel-val">34</p><p class="rombel-sub">L13 · P21</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">XI TJKT 3</p><p class="rombel-val">36</p><p class="rombel-sub">L14 · P22</p></div>
+      <div class="rombel-card" style="border-left-color:#c07800"><p class="rombel-name">XI TO 1</p><p class="rombel-val">35</p><p class="rombel-sub">L31 · P4</p></div>
+      <div class="rombel-card" style="border-left-color:#c07800"><p class="rombel-name">XI TO 2</p><p class="rombel-val">36</p><p class="rombel-sub">L32 · P4</p></div>
+      <div class="rombel-card" style="border-left-color:#b03060"><p class="rombel-name">XI TP 1</p><p class="rombel-val">34</p><p class="rombel-sub">L32 · P2</p></div>
+      <div class="rombel-card" style="border-left-color:#b03060"><p class="rombel-name">XI TP 2</p><p class="rombel-val">35</p><p class="rombel-sub">L35 · P0</p></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header">
+      <h2 class="sec-title">Kelas XII — 12 rombel, 402 siswa</h2>
+    </div>
+    <div class="rombel-grid">
+      <div class="rombel-card" style="border-left-color:#1a5fa8"><p class="rombel-name">XII BP 1</p><p class="rombel-val">34</p><p class="rombel-sub">L12 · P22</p></div>
+      <div class="rombel-card" style="border-left-color:#1a5fa8"><p class="rombel-name">XII BP 2</p><p class="rombel-val">35</p><p class="rombel-sub">L15 · P20</p></div>
+      <div class="rombel-card" style="border-left-color:#1a5fa8"><p class="rombel-name">XII BP 3</p><p class="rombel-val">34</p><p class="rombel-sub">L12 · P22</p></div>
+      <div class="rombel-card" style="border-left-color:#0f7a60"><p class="rombel-name">XII TE 1</p><p class="rombel-val">32</p><p class="rombel-sub">L19 · P13</p></div>
+      <div class="rombel-card" style="border-left-color:#0f7a60"><p class="rombel-name">XII TE 2</p><p class="rombel-val">32</p><p class="rombel-sub">L22 · P10</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">XII TJKT 1</p><p class="rombel-val">35</p><p class="rombel-sub">L16 · P19</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">XII TJKT 2</p><p class="rombel-val">35</p><p class="rombel-sub">L18 · P17</p></div>
+      <div class="rombel-card" style="border-left-color:#5a4aaa"><p class="rombel-name">XII TJKT 3</p><p class="rombel-val">35</p><p class="rombel-sub">L8 · P27</p></div>
+      <div class="rombel-card" style="border-left-color:#c07800"><p class="rombel-name">XII TO 1</p><p class="rombel-val">32</p><p class="rombel-sub">L29 · P3</p></div>
+      <div class="rombel-card" style="border-left-color:#c07800"><p class="rombel-name">XII TO 2</p><p class="rombel-val">31</p><p class="rombel-sub">L31 · P0</p></div>
+      <div class="rombel-card" style="border-left-color:#b03060"><p class="rombel-name">XII TP 1</p><p class="rombel-val">34</p><p class="rombel-sub">L33 · P1</p></div>
+      <div class="rombel-card" style="border-left-color:#b03060"><p class="rombel-name">XII TP 2</p><p class="rombel-val">33</p><p class="rombel-sub">L31 · P2</p></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Legenda program keahlian</h2></div>
+    <div class="lgd">
+      <span><span class="dot" style="background:#1a5fa8"></span>BP — Broadcasting &amp; Perfilman</span>
+      <span><span class="dot" style="background:#0f7a60"></span>TE — Teknik Elektronika Industri</span>
+      <span><span class="dot" style="background:#5a4aaa"></span>TJKT — Teknik Jaringan Komputer &amp; Telekomunikasi</span>
+      <span><span class="dot" style="background:#c07800"></span>TO — Teknik Otomotif</span>
+      <span><span class="dot" style="background:#b03060"></span>TP — Teknik Pemesinan</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 5: GURU & TENDIK ═══ -->
+<div id="tab-ptk" class="panel" role="tabpanel">
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Komposisi kepegawaian</h2></div>
+    <div class="m-grid">
+      <div class="m-card accent"><p class="m-lbl">PPPK</p><p class="m-val">31</p><p class="m-sub">Status terbanyak</p></div>
+      <div class="m-card"><p class="m-lbl">PPPK Paruh Waktu</p><p class="m-val">6</p><p class="m-sub">Angkatan Nov 2025</p></div>
+      <div class="m-card"><p class="m-lbl">PNS</p><p class="m-val">3</p><p class="m-sub">Incl. Kepala Sekolah</p></div>
+      <div class="m-card"><p class="m-lbl">Guru Honor</p><p class="m-val">7</p><p class="m-sub">GTK sekolah</p></div>
+      <div class="m-card"><p class="m-lbl">Tendik Honor</p><p class="m-val">15</p><p class="m-sub">Semua non-ASN</p></div>
+    </div>
+    <div class="chart-wrap" style="height:180px">
+      <canvas id="c-status" role="img" aria-label="Status kepegawaian guru dan tendik. PPPK 31, PPPK Paruh Waktu 6, PNS 3, Guru Honor 7, Tendik Honor 15.">PPPK 31, Paruh Waktu 6, PNS 3, Guru Honor 7, Tendik 15</canvas>
+    </div>
+  </div>
+
+  <div class="two sec">
+    <div>
+      <div class="sec-header"><h2 class="sec-title">Guru per bidang studi</h2></div>
+      <div class="bar-row"><span class="bar-name">TJKT/TIK</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#5a4aaa;color:#eee8ff">7 guru</div></div></div>
+      <div class="bar-row"><span class="bar-name">Broadcasting</span><div class="bar-track"><div class="bar-fill" style="width:36%;background:#1a5fa8;color:#e6f0fa">5 guru</div></div></div>
+      <div class="bar-row"><span class="bar-name">Teknik TO</span><div class="bar-track"><div class="bar-fill" style="width:29%;background:#c07800;color:#fff8e1">4 guru</div></div></div>
+      <div class="bar-row"><span class="bar-name">Teknik TE</span><div class="bar-track"><div class="bar-fill" style="width:29%;background:#0f7a60;color:#e1f5ee">4 guru</div></div></div>
+      <div class="bar-row"><span class="bar-name">Bhs. Inggris</span><div class="bar-track"><div class="bar-fill" style="width:29%;background:#888;color:#fff">4 guru</div></div></div>
+      <div class="bar-row"><span class="bar-name">Teknik TP</span><div class="bar-track"><div class="bar-fill" style="width:21%;background:#b03060;color:#fce8ef">3 guru</div></div></div>
+      <div class="bar-row"><span class="bar-name">Matematika</span><div class="bar-track"><div class="bar-fill" style="width:21%;background:#888;color:#fff">3 guru</div></div></div>
+      <div class="bar-row"><span class="bar-name">Agama Islam</span><div class="bar-track"><div class="bar-fill" style="width:21%;background:#888;color:#fff">3 guru</div></div></div>
+      <div class="bar-row"><span class="bar-name">Informatika</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#4a8fd4;color:#fff">2 guru</div></div></div>
+    </div>
+    <div>
+      <div class="sec-header"><h2 class="sec-title">Pendidikan tertinggi guru</h2></div>
+      <div class="bar-row"><span class="bar-name">S1</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#1a5fa8;color:#e6f0fa">47 (88%)</div></div></div>
+      <div class="bar-row"><span class="bar-name">S2</span><div class="bar-track"><div class="bar-fill" style="width:6%;background:#0f7a60;color:#e1f5ee">3</div></div></div>
+      <div class="bar-row"><span class="bar-name">SMA/D3</span><div class="bar-track"><div class="bar-fill" style="width:6%;background:#ccc;color:#333">3</div></div></div>
+      <div class="alert" style="margin-top:1rem">88% guru sudah S1. Kepala sekolah S2 Matematika (PNS, TMT 1990). 6 guru PPPK paruh waktu baru bergabung November 2025.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Struktur kepemimpinan</h2></div>
+    <div class="two">
+      <div>
+        <div class="info-row"><span class="info-key">Kepala Sekolah</span><span class="info-val">Tumiyanta, S.Pd, M.Pd (PNS)</span></div>
+        <div class="info-row"><span class="info-key">Waka Kurikulum</span><span class="info-val">Ujang Ridwan Maulana (PNS)</span></div>
+        <div class="info-row"><span class="info-key">Waka Kesiswaan</span><span class="info-val">Abdul Muttaqin (PPPK)</span></div>
+      </div>
+      <div>
+        <div class="info-row"><span class="info-key">Waka Sarpras</span><span class="info-val">Mohamad Syahroni (PPPK)</span></div>
+        <div class="info-row"><span class="info-key">Waka Humas</span><span class="info-val">Aryu Apendi (PPPK)</span></div>
+        <div class="info-row"><span class="info-key">Koordinator P5</span><span class="info-val">Kurniawan (PPPK Paruh Waktu)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Relasi DUDI (Dunia Usaha &amp; Industri)</h2></div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:1rem">19 mitra DUDI terdaftar, mencakup:</p>
+    <div class="info-row"><span class="info-key">Pendidikan tinggi</span><span class="info-val">UNPAM, Universitas Budi Luhur</span></div>
+    <div class="info-row"><span class="info-key">Otomotif</span><span class="info-val">Setiajaya Toyota, PT Indomobil Trada, Ottoxpert BSD</span></div>
+    <div class="info-row"><span class="info-key">Teknologi informasi</span><span class="info-val">JAVA Digital Nusantara, Khazanah Net Indonesia, BONET</span></div>
+    <div class="info-row"><span class="info-key">Industri &amp; kontruksi</span><span class="info-val">PT PLN Sawangan, PT Graha Perdana Indah</span></div>
+    <div class="info-row"><span class="info-key">Kreatif &amp; fotografis</span><span class="info-val">ZAP Photography, VIP Creative Studio</span></div>
+  </div>
+</div>
+
+<!-- ═══ PANEL 6: ALUMNI ═══ -->
+<div id="tab-alumni" class="panel" role="tabpanel">
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Tren lulusan per tahun</h2><span class="sec-note">dari data historis siswa keluar</span></div>
+    <div class="chart-wrap" style="height:260px">
+      <canvas id="c-alumni" role="img" aria-label="Tren lulusan per tahun 2014-2025. Meningkat dari 2014 ke 2022, angka 2025 belum final.">Tren meningkat dari 2014 ke 2024</canvas>
+    </div>
+    <div class="alert">Data historis dihitung dari basis data siswa keluar Dapodik. Angka 2025 belum final karena semester berjalan. Tahun 2014–2016 kemungkinan tidak lengkap karena pencatatan Dapodik awal.</div>
+  </div>
+
+  <div class="two sec">
+    <div>
+      <div class="hl-box">
+        <p class="hl-n">402</p>
+        <p class="hl-l">Siswa kelas XII siap lulus tahun akademik 2025/2026</p>
+      </div>
+      <div class="hl-box" style="background:var(--navy-mid)">
+        <p class="hl-n">~2.500+</p>
+        <p class="hl-l">Estimasi total alumni sejak sekolah berdiri (2011)</p>
+      </div>
+    </div>
+    <div>
+      <div class="sec-header"><h2 class="sec-title">Keterangan siswa keluar</h2></div>
+      <div class="bar-row"><span class="bar-name">Lulus</span><div class="bar-track"><div class="bar-fill" style="width:95%;background:#1a5fa8;color:#e6f0fa">mayoritas</div></div></div>
+      <div class="bar-row"><span class="bar-name">Pindah sekolah</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#c07800;color:#fff8e1">sedikit</div></div></div>
+      <div class="bar-row"><span class="bar-name">Keluar/DO</span><div class="bar-track"><div class="bar-fill" style="width:2%;background:#c0392b;color:#fff">kecil</div></div></div>
+      <div class="alert" style="margin-top:1rem">Hampir seluruh catatan keluar berstatus "Lulus". Angka putus sekolah tidak tersedia eksplisit dari data ini — diperlukan analisis lintas tahun untuk menghitung angka retensi aktual.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-header"><h2 class="sec-title">Asal sekolah siswa aktif</h2><span class="sec-note">estimasi dari sampling</span></div>
+    <div class="bar-row"><span class="bar-name">SMPN Gn. Sindur</span><div class="bar-track"><div class="bar-fill" style="width:55%;background:#1a5fa8;color:#e6f0fa">dominan</div></div></div>
+    <div class="bar-row"><span class="bar-name">MTsN / MTs</span><div class="bar-track"><div class="bar-fill" style="width:20%;background:#4a8fd4;color:#fff">signifikan</div></div></div>
+    <div class="bar-row"><span class="bar-name">SMPN Parung</span><div class="bar-track"><div class="bar-fill" style="width:12%;background:#a8cef0;color:#0f2744">ada</div></div></div>
+    <div class="bar-row"><span class="bar-name">Luar kecamatan</span><div class="bar-track"><div class="bar-fill" style="width:8%;background:#ccc;color:#333">kecil</div></div></div>
+    <div class="bar-row"><span class="bar-name">Tidak tercatat</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:#eee;color:#666">5%</div></div></div>
+    <div class="alert">Catchment area utama adalah Kecamatan Gunung Sindur. SMKN 1 berfungsi sebagai SMK rujukan utama warga lokal — terutama bagi lulusan SMPN 1, 2, dan 3 Gunung Sindur.</div>
+  </div>
+</div>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="site-footer">
+  <p><strong style="color:rgba(255,255,255,.7)">SMKN 1 Gunung Sindur dalam Angka</strong></p>
+  <p>Sumber data: Dapodik SMKN 1 Gunung Sindur · Unduhan 8 Juni 2026</p>
+  <p>Data bersifat publik · <a href="http://referensi.data.kemendikdasmen.go.id" target="_blank">referensi.data.kemendikdasmen.go.id</a></p>
+  <p style="margin-top:.75rem;font-size:11px;opacity:.6">Beberapa angka merupakan estimasi dari sampling data siswa aktif. Data siswa keluar historis dihitung dari basis Dapodik.</p>
+</footer>
+
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.nav-bar').offsetTop - 10, behavior: 'smooth' });
+  renderChartsForTab(name);
+}
+
+const rendered = {};
+
+function renderChartsForTab(name) {
+  if (rendered[name]) return;
+  rendered[name] = true;
+
+  const tc = '#7a7a7a';
+  const gc = 'rgba(0,0,0,0.06)';
+  const base = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: tc, font: { size: 11 } }, grid: { color: gc } },
+      y: { ticks: { color: tc, font: { size: 11 } }, grid: { color: gc } }
+    }
+  };
+
+  if (name === 'ringkasan') {
+    new Chart(document.getElementById('c-tingkat'), {
+      type: 'bar',
+      data: {
+        labels: ['Kelas X', 'Kelas XI', 'Kelas XII'],
+        datasets: [
+          { label: 'Laki-laki', data: [277, 235, 246], backgroundColor: '#1a5fa8' },
+          { label: 'Perempuan', data: [235, 180, 156], backgroundColor: '#b03060' }
+        ]
+      },
+      options: { ...base }
+    });
+    new Chart(document.getElementById('c-prodi'), {
+      type: 'bar',
+      data: {
+        labels: ['TJKT', 'Broadcasting', 'Otomotif', 'Pemesinan', 'Elektronika'],
+        datasets: [{
+          data: [320, 303, 228, 194, 179],
+          backgroundColor: ['#5a4aaa', '#1a5fa8', '#c07800', '#b03060', '#0f7a60']
+        }]
+      },
+      options: { ...base }
+    });
+  }
+
+  if (name === 'siswa') {
+    new Chart(document.getElementById('c-usia'), {
+      type: 'bar',
+      data: {
+        labels: ['13–15 tahun', '16–20 tahun'],
+        datasets: [{ data: [217, 1112], backgroundColor: ['#a8cef0', '#1a5fa8'] }]
+      },
+      options: { ...base }
+    });
+    new Chart(document.getElementById('c-agama'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Islam', 'Kristen', 'Konghucu', 'Budha', 'Khatolik'],
+        datasets: [{
+          data: [1276, 34, 9, 5, 5],
+          backgroundColor: ['#1a5fa8', '#0f7a60', '#c07800', '#b03060', '#5a4aaa'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => ` ${c.label}: ${c.raw.toLocaleString('id-ID')} (${Math.round(c.raw/1329*100)}%)` } }
+        },
+        cutout: '58%'
+      }
+    });
+  }
+
+  if (name === 'sosialekon') {
+    new Chart(document.getElementById('c-penghasilan'), {
+      type: 'bar',
+      data: {
+        labels: ['< 500 rb', '500 rb – 1 jt', '1 – 2 jt', '2 – 5 jt', '5 – 20 jt', 'Tidak diisi'],
+        datasets: [{
+          data: [69, 263, 500, 389, 17, 91],
+          backgroundColor: ['#c0392b', '#f0997b', '#1a5fa8', '#4a8fd4', '#0f7a60', '#ccc']
+        }]
+      },
+      options: {
+        ...base,
+        scales: {
+          x: { ticks: { color: tc, font: { size: 11 }, maxRotation: 25 }, grid: { color: gc } },
+          y: { ticks: { color: tc, font: { size: 11 } }, grid: { color: gc } }
+        }
+      }
+    });
+  }
+
+  if (name === 'ptk') {
+    new Chart(document.getElementById('c-status'), {
+      type: 'bar',
+      data: {
+        labels: ['PPPK', 'PPPK Paruh Waktu', 'PNS', 'Guru Honor', 'Tendik Honor'],
+        datasets: [{
+          data: [31, 6, 3, 7, 15],
+          backgroundColor: ['#1a5fa8', '#4a8fd4', '#0f7a60', '#c07800', '#ccc']
+        }]
+      },
+      options: { ...base, indexAxis: 'y' }
+    });
+  }
+
+  if (name === 'alumni') {
+    new Chart(document.getElementById('c-alumni'), {
+      type: 'bar',
+      data: {
+        labels: ['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025*'],
+        datasets: [{
+          data: [12, 18, 24, 31, 38, 45, 52, 58, 74, 68, 82, 49],
+          backgroundColor: [
+            '#a8cef0','#a8cef0','#a8cef0',
+            '#4a8fd4','#4a8fd4','#4a8fd4',
+            '#1a5fa8','#1a5fa8','#1a5fa8',
+            '#1a5fa8','#1a5fa8',
+            '#c07800'
+          ]
+        }]
+      },
+      options: {
+        ...base,
+        scales: {
+          x: { ticks: { color: tc, font: { size: 11 } }, grid: { color: gc } },
+          y: { ticks: { color: tc, font: { size: 11 } }, grid: { color: gc } }
+        }
+      }
+    });
+  }
+}
+
+renderChartsForTab('ringkasan');
+</script>
+</body>
+</html>
